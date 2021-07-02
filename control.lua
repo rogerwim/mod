@@ -23,18 +23,18 @@ local function placeholder()
 end
 local function reset(e)
 	if e.player_index then
-		if e.command == 'count' then
+		if e.name == 'count' then
 			game.get_player(e.player_index).print("boilers used: " .. global["boiler_count"] .. "/" .. 50)
 			game.get_player(e.player_index).print("solar panels used: " .. global["solar_count"] .. "/" .. 1500)
 		end
-		if e.command == 'reset' then
+		if e.name == 'reset' then
 			game.print(game.get_player(e.player_index).name .. " is attempting to reset the limted solar/boiler plugin") 
 		end
-		if game.get_player(e.player_index).admin == false and e.command == 'reset' then
+		if game.get_player(e.player_index).admin == false and e.name == 'reset' then
 			game.get_player(e.player_index).print("error, you must be an admin")
 			game.print(game.get_player(e.player_index).name .. " did not have the permission to do that")
 		end
-		if e.command == 'reset' and game.get_player(e.player_index).admin then
+		if e.name == 'reset' and game.get_player(e.player_index).admin then
 			game.print('resetting counts')
 			global['boiler_count'] = 0
 			global['boiler_ids'] = {}
