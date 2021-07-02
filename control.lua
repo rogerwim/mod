@@ -18,6 +18,9 @@ local function setter()
 	handleBoiler.setter()
 	handleSolar.setter()
 end
+local function placeholder()
+
+end
 local function reset(e)
 	if e.player_index then
 		if e.command == 'count' then
@@ -43,5 +46,6 @@ end
 script.on_event(defines.events.on_robot_built_entity, handleBuildByRobot)
 script.on_event(defines.events.on_built_entity, handleBuildByPlayer)
 script.on_event(defines.events.on_entity_destroyed,handleDestroy)
-script.on_event(defines.events.on_console_command,reset)
 script.on_init(setter)
+commands.add_command("count","print how close you are to the limit",reset)
+commands.add_command("reset","reset the boiler/solar limit",reset)
