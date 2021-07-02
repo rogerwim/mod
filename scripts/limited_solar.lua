@@ -36,8 +36,10 @@ local function handleDestroy (e)
 	for key,value in ipairs(global['solar_ids']) do
 		if e.registration_number == value then
 			global['solar_count'] = global['solar_count'] - 1
+			local index = key
 		end
 	end	
+	table.remove(global['solar_ids'],index)
 end
 local exports = {
 	["handleBuildByRobot"] = handleBuildByRobot,

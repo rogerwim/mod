@@ -40,8 +40,10 @@ local function handleDestroy (e)
 	for key,value in ipairs(global['boiler_ids']) do
 		if e.registration_number == value then
 			global['boiler_count'] = global['boiler_count'] - 1
+			local index = key
 		end
-	end	
+	end
+	table.remove(global['boiler_ids'],index)	
 end
 local exports = {
 	["handleBuildByRobot"] = handleBuildByRobot,
