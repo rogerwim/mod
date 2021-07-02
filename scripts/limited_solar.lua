@@ -5,7 +5,7 @@ end
 local function handleBuildByPlayer (e)
   if e.created_entity.name == "solar-panel" then
     global['solar_count'] = global['solar_count'] + 1
-	if global['solar_count'] > 5 then
+	if global['solar_count'] > 1500 then
 		game.print("too many of a limited item have been built, removeing last built and giving to builder")
 		e.created_entity.last_user.insert({name = e.created_entity.name, count=1})
 		e.created_entity.mine({ignore_minable = true})
@@ -18,7 +18,7 @@ end
 local function handleBuildByRobot (e)
   if e.created_entity.name == "solar-panel" then
     global['solar_count'] = global['solar_count'] + 1
-	if global['solar_count'] > 5 then
+	if global['solar_count'] > 1500 then
 		local posx = (e.created_entity.bounding_box['left_top']['x']+e.created_entity.bounding_box['right_bottom']['x'])/2
 		local posy = (e.created_entity.bounding_box['left_top']['y']+e.created_entity.bounding_box['right_bottom']['y'])/2
 		local itemstack = {name = e.created_entity.name, count=1}
