@@ -19,8 +19,12 @@ local function setter()
 	handleSolar.setter()
 end
 local function reset(e)
-	game.print(e.command)
-	if e.command == 'reset' then
+	game.print(game.get_player(e.player_index).name .. " is attempting to reset the limted solar/boiler plugin") 
+	if game.get_player(e.player_index).admin == false and e.command == 'reset' then
+		game.get_player(e.player_index).print("error, you must be an admin")
+		game.print(game.get_player(e.player_index).name .. " did not have the permission to do that")
+	end
+	if e.command == 'reset' and game.get_player(e.player_index).admin then
 		game.print('resetting counts')
 		global['boiler_count'] = 0
 		global['boiler_ids'] = {}
